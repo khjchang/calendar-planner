@@ -1,0 +1,82 @@
+[
+  {
+    "input": "Book a 30 minute meeting with Alice tomorrow afternoon.",
+    "output": "Checks available slots, proposes the first valid afternoon slot in PT, ET, and KST, and books after selection."
+  },
+  {
+    "input": "Schedule a 45 minute sync with Priya tomorrow at 1pm PT.",
+    "output": "Finds that 1pm PT conflicts with an existing event and suggests nearby alternatives."
+  },
+  {
+    "input": "Find time for a 60 minute meeting with Alice and Bob on Friday after 2pm ET.",
+    "output": "Converts ET to UTC, checks attendee conflicts, and returns candidate times."
+  },
+  {
+    "input": "Reschedule Design Review to tomorrow morning.",
+    "output": "Finds the target event, searches morning slots, and asks for confirmation before moving it."
+  },
+  {
+    "input": "Move my 1:1 with Priya to tomorrow at 2pm PT.",
+    "output": "Identifies the matching event, validates the new time, and requests confirmation before rescheduling."
+  },
+  {
+    "input": "Delete Design Review.",
+    "output": "Asks for confirmation before calling the delete tool."
+  },
+  {
+    "input": "Book lunch with Bob at 12pm.",
+    "output": "Asks which day and time zone should be used."
+  },
+  {
+    "input": "Set up a meeting with Alice, Bob, and Priya tomorrow.",
+    "output": "Defaults to working hours, checks all participant calendars, and offers the best three slots."
+  },
+  {
+    "input": "Schedule a meeting for 3pm.",
+    "output": "Asks for participants and time zone because the request is incomplete."
+  },
+  {
+    "input": "Book a two hour meeting with Alice tomorrow afternoon.",
+    "output": "Searches the afternoon window and returns no slot if none is long enough."
+  },
+  {
+    "input": "Can you find time with Alice in KST next Friday morning?",
+    "output": "Interprets the request in KST, converts results to PT and ET as well."
+  },
+  {
+    "input": "Reschedule Recruiting Sync to Friday after 4pm ET.",
+    "output": "Checks whether the new window avoids conflicts and asks for approval before moving the event."
+  },
+  {
+    "input": "Book a 15 minute intro call with Priya tomorrow morning.",
+    "output": "Finds the earliest clean quarter-hour-compatible slot and creates the event."
+  },
+  {
+    "input": "Find a slot for Alice and Bob where nobody has conflicts.",
+    "output": "Prompts for date, duration, and time window before using tools."
+  },
+  {
+    "input": "Move Design Review earlier if possible.",
+    "output": "Asks which day range is acceptable before searching."
+  },
+  {
+    "input": "Schedule a meeting with Alice at 9am ET and show me Korea time too.",
+    "output": "Parses ET input and returns the same slot in PT, ET, and KST."
+  },
+  {
+    "input": "Book a meeting with Alice tomorrow at 9am PT and Bob tomorrow at 9am ET.",
+    "output": "Flags the request as ambiguous because the participants appear to use different intended local times."
+  },
+  {
+    "input": "Find any open time for a 30 minute call tomorrow afternoon.",
+    "output": "Searches the user's availability and offers the first three slots."
+  },
+  {
+    "input": "Delete every meeting tomorrow.",
+    "output": "Refuses to mass-delete without listing the affected events and getting explicit confirmation."
+  },
+  {
+    "input": "What's the weather in Seoul?",
+    "output": "Refuses because the request is outside calendar scheduling scope."
+  }
+]

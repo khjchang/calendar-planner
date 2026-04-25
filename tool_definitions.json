@@ -1,0 +1,84 @@
+[
+  {
+    "name": "get_available_slots",
+    "endpoint": "POST /api/tools/get_available_slots",
+    "description": "Return candidate meeting slots for the requested day, window, attendees, and duration.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string",
+          "description": "ISO datetime anchor used to select the calendar day to search."
+        },
+        "window": {
+          "type": "object",
+          "properties": {
+            "start_hour": { "type": "integer" },
+            "end_hour": { "type": "integer" },
+            "zone": { "type": "string" }
+          },
+          "required": ["start_hour", "end_hour", "zone"]
+        },
+        "duration_minutes": { "type": "integer" },
+        "attendees": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "participant_emails": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ignore_event_id": {
+          "type": "string",
+          "description": "Optional event ID to exclude when computing conflicts during a reschedule."
+        }
+      },
+      "required": ["day", "window", "duration_minutes"]
+    }
+  },
+  {
+    "name": "create_event",
+    "endpoint": "POST /api/tools/create_event",
+    "description": "Create a meeting on the configured Google Calendar or the local demo calendar.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "start_time": { "type": "string", "description": "UTC RFC3339 timestamp." },
+        "end_time": { "type": "string", "description": "UTC RFC3339 timestamp." },
+        "attendees": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "timezone_display": { "type": "string" }
+      },
+      "required": ["title", "start_time", "end_time"]
+    }
+  },
+  {
+    "name": "delete_event",
+    "endpoint": "POST /api/tools/delete_event",
+    "description": "Delete a calendar event after explicit user confirmation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string" }
+      },
+      "required": ["event_id"]
+    }
+  },
+  {
+    "name": "reschedule_event",
+    "endpoint": "POST /api/tools/reschedule_event",
+    "description": "Move an event to a new start and end time after explicit user confirmation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string" },
+        "new_start_time": { "type": "string", "description": "UTC RFC3339 timestamp." },
+        "new_end_time": { "type": "string", "description": "UTC RFC3339 timestamp." }
+      },
+      "required": ["event_id", "new_start_time", "new_end_time"]
+    }
+  }
+]

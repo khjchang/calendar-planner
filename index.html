@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar Scheduling Agent Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Project 3 Demo</p>
+        <h1>Calendar Scheduling Agent</h1>
+        <p class="hero-copy">
+          Natural-language scheduling demo with slot search, conflict handling,
+          rescheduling, and three-way time zone views.
+        </p>
+      </header>
+
+      <main class="grid">
+        <section class="panel panel-input">
+          <div class="panel-header">
+            <h2>Ask The Agent</h2>
+            <span id="mode-badge" class="badge">Loading</span>
+          </div>
+
+          <label for="request" class="label">Scheduling request</label>
+          <textarea id="request" rows="6">
+Book a 30 minute meeting with Alice and Bob tomorrow afternoon.</textarea
+          >
+
+          <div class="quick-prompts">
+            <button class="prompt-chip" data-prompt="Book a 30 minute meeting with Alice and Bob tomorrow afternoon.">
+              Multi-participant booking
+            </button>
+            <button class="prompt-chip" data-prompt="Schedule a meeting with Priya tomorrow at 1pm PT for 45 minutes.">
+              Exact-time request
+            </button>
+            <button class="prompt-chip" data-prompt="Reschedule Design Review to tomorrow morning.">
+              Reschedule flow
+            </button>
+            <button class="prompt-chip" data-prompt="Find time for a 60 minute sync with Alice, Bob, and Priya on Friday after 2pm ET.">
+              Cross-time-zone search
+            </button>
+          </div>
+
+          <div class="actions">
+            <button id="run-agent" class="btn btn-primary">Run Agent</button>
+            <button id="reset-demo" class="btn btn-secondary">Reset Demo</button>
+          </div>
+
+          <div id="result-card" class="result-card">
+            <p class="muted">Agent output will appear here.</p>
+          </div>
+          <p class="label helper-copy">Try short follow-ups after the first parse like `later`, `without Bob`, or `show in KST`.</p>
+        </section>
+
+        <section class="panel is-hidden">
+          <div class="panel-header">
+            <h2>Tool Trace</h2>
+            <span id="trace-badge" class="badge badge-dark">Loading</span>
+          </div>
+          <div id="tool-trace" class="trace"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Calendar State</h2>
+            <div class="timezone-toggle">
+              <label for="display-zone">Display</label>
+              <select id="display-zone">
+                <option value="America/Los_Angeles">PT</option>
+                <option value="America/New_York">ET</option>
+                <option value="Asia/Seoul">KST</option>
+              </select>
+            </div>
+          </div>
+          <div id="calendar-list" class="calendar-list"></div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Time Zone Preview</h2>
+            <span class="badge">PT / ET / KST</span>
+          </div>
+          <div id="timezone-preview" class="timezone-preview"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
